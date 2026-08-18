@@ -1766,137 +1766,119 @@ body {
 ========================================================= */
 
 /* =========================================================
-   EXACT DESKTOP-LAYOUT MODE
-   The page always uses a 1536 x 864 desktop canvas.
-   script.js scales this whole canvas uniformly on tablet/mobile.
+   FINAL RESPONSIVE — DESKTOP COMPOSITION PRESERVED
 ========================================================= */
+@media (max-width: 1200px) {
+    .horizontal-wrapper,.panel{width:100vw;height:100dvh}
+    .panel{min-width:100vw}
 
-:root {
-    --design-width: 1536px;
-    --design-height: 864px;
-    --site-scale: 1;
-    --site-left: 0px;
-    --site-top: 0px;
+    .navbar{
+        width:100%;height:80px;padding:10px 30px 0;
+        display:flex;align-items:center;justify-content:space-between;
+        gap:30px;overflow:visible;
+    }
+    .logo{margin-top:0;flex-shrink:0}
+    .logo img{width:clamp(110px,14vw,180px);height:auto;display:block;object-fit:contain}
+    .nav-links{
+        display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+        align-items:center;justify-content:flex-end;
+        gap:clamp(12px,2vw,35px)!important;
+        position:static!important;width:auto!important;max-height:none!important;
+        overflow:visible!important;padding:0!important;background:transparent!important;
+    }
+    .nav-links li{width:auto!important;flex-shrink:0}
+    .nav-links a{display:inline-block!important;padding:0!important;font-size:clamp(8px,1.15vw,13px)!important;white-space:nowrap}
+    .menu-button{display:none!important}
+
+    .home{overflow:hidden}
+    .home-main{width:100%;height:75%;min-height:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+    .hero-content{width:clamp(280px,36vw,550px);margin-left:13.5%;margin-top:55px}
+    .hero-content h1{font-size:clamp(36px,5vw,70px)!important;line-height:.90}
+    .hero-content>p{width:clamp(260px,31vw,470px);font-size:clamp(11px,1.15vw,16px)}
+    .hero-buttons{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:clamp(10px,1.5vw,20px);width:auto!important}
+    .primary-btn,.outline-btn{width:auto!important;min-width:clamp(115px,12vw,165px);padding:clamp(10px,1vw,15px) clamp(14px,1.6vw,25px);font-size:clamp(9px,1vw,13px);white-space:nowrap}
+
+    .home-contact{width:100%;height:25%;min-height:0;padding:clamp(10px,1.4vw,20px) 5%}
+    .home-contact h2{font-size:clamp(18px,2vw,28px)}
+    .home-contact-items{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important}
+    .home-contact-item{padding:0 clamp(8px,2vw,35px);gap:clamp(7px,1vw,16px)}
+    .contact-icon{width:clamp(32px,4vw,54px);height:clamp(32px,4vw,54px);flex:0 0 clamp(32px,4vw,54px);font-size:clamp(12px,1.5vw,21px)}
+    .home-contact-item p{font-size:clamp(7px,.9vw,13px);white-space:nowrap!important}
+
+    .page-content{width:80%!important}
+    .page-content h2{font-size:clamp(34px,4vw,55px)}
+    .cards{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(10px,1.6vw,25px)}
+    .card{min-width:0;height:clamp(145px,14vw,210px);min-height:0!important;padding:clamp(15px,2vw,30px)}
+
+    .team-scroll{height:100dvh;padding-top:clamp(85px,8vw,120px);padding-bottom:clamp(60px,7vw,100px)}
+    .team-block{width:min(1180px,94%)}
+    .team-members,.main-team-members{
+        display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+        justify-content:center!important;align-items:stretch;overflow:visible!important;padding:0!important;
+    }
+    .team-members{gap:clamp(14px,2vw,35px)!important}
+    .main-team-members{gap:clamp(10px,1.5vw,25px)!important}
+    .member-card.leader{width:clamp(230px,26vw,400px)!important;flex:0 0 clamp(230px,26vw,400px)!important}
+    .member-card:not(.leader){width:clamp(150px,16vw,245px)!important;flex:0 0 clamp(150px,16vw,245px)!important}
+    .main-team-members .leader-card{width:clamp(200px,21vw,320px)!important;flex:0 0 clamp(200px,21vw,320px)!important;margin:0!important}
+    .main-member-card{width:clamp(135px,14vw,210px)!important;flex:0 0 clamp(135px,14vw,210px)!important;min-height:clamp(280px,30vw,350px)}
+    .member-image{width:clamp(110px,12vw,180px)!important;height:clamp(140px,15vw,220px)!important}
+
+    .achievements-title,.events-title,.projects-title{font-size:clamp(32px,4vw,50px)!important}
+    .achievement-cards{flex-direction:row!important;flex-wrap:nowrap!important;width:90%!important;max-width:1000px!important;margin:clamp(130px,14vw,195px) auto 0!important;gap:clamp(15px,2vw,30px)!important}
+    .achievement-card{width:clamp(190px,20vw,300px)!important;height:clamp(125px,13vw,185px)!important;flex:1 1 0}
+    .events-list{width:min(800px,70%)!important;margin:clamp(130px,14vw,200px) auto 0!important}
+    .projects-list{width:95%!important;margin:clamp(130px,14vw,195px) auto 40px!important;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:clamp(15px,2vw,30px)!important;overflow:hidden!important}
+    .project-card{width:clamp(300px,34vw,510px)!important;min-width:clamp(300px,34vw,510px)!important}
+    .project-image{height:clamp(150px,15vw,220px)!important}
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #010712;
+@media (max-width: 600px) {
+    .navbar{height:58px;padding:5px 12px 0;gap:10px}
+    .logo img{width:85px}
+    .nav-links{gap:8px!important}
+    .nav-links a{font-size:6.5px!important}
+
+    .home-main{height:75%!important;min-height:0!important;background-size:cover!important;background-position:center!important}
+    .hero-content{width:220px!important;margin-left:8%!important;margin-top:35px!important}
+    .hero-content h1{font-size:31px!important}
+    .hero-content>p{width:210px!important;font-size:8px!important;margin-top:12px}
+    .hero-buttons{flex-direction:row!important;width:auto!important;gap:7px!important;margin-top:14px}
+    .primary-btn,.outline-btn{width:auto!important;min-width:78px!important;padding:8px 9px!important;font-size:6.5px!important}
+
+    .home-contact{height:25%!important;min-height:0!important;padding:10px!important}
+    .home-contact h2{font-size:14px!important}
+    .home-contact-items{grid-template-columns:repeat(4,1fr)!important;gap:0!important;margin-top:0!important}
+    .home-contact-item{padding:0 5px!important;gap:4px!important}
+    .contact-icon{width:24px!important;height:24px!important;flex:0 0 24px!important;font-size:8px!important}
+    .home-contact-item p{font-size:5.5px!important;white-space:nowrap!important}
+
+    .page-content{width:82%!important}
+    .page-content h2{font-size:27px!important}
+    .cards{grid-template-columns:repeat(4,1fr)!important;gap:7px!important;margin-top:25px!important}
+    .card{height:105px!important;min-height:105px!important;padding:8px!important}
+
+    .member-card.leader{width:145px!important;flex:0 0 145px!important}
+    .member-card:not(.leader){width:90px!important;flex:0 0 90px!important}
+    .main-team-members .leader-card{width:120px!important;flex:0 0 120px!important}
+    .main-member-card{width:78px!important;flex:0 0 78px!important;min-height:auto!important}
+    .member-image{width:65px!important;height:82px!important}
+    .member-card,.leader-card,.main-member-card{padding:8px 5px!important}
+
+    .achievement-cards{width:88%!important;margin:115px auto 0!important;gap:8px!important}
+    .achievement-card{width:auto!important;height:100px!important;flex:1!important}
+
+    .events-list{width:72%!important;margin:115px auto 0!important}
+    .event-card{min-height:75px;padding:9px 10px;gap:12px}
+    .event-date{width:55px;height:38px}
+    .event-date span{font-size:9px}
+    .event-info h3{font-size:9px}
+    .event-info p{font-size:6px}
+
+    .projects-list{margin:115px auto 30px!important;gap:10px!important}
+    .project-card{width:220px!important;min-width:220px!important}
+    .project-image{height:110px!important}
+    .project-info{padding:10px}
+    .project-info h3{font-size:11px;margin-bottom:15px}
+    .project-btn{padding:7px 10px;font-size:7px}
 }
-
-/* Keep the original desktop canvas size */
-.horizontal-wrapper {
-    position: fixed;
-    left: var(--site-left);
-    top: var(--site-top);
-
-    width: var(--design-width) !important;
-    height: var(--design-height) !important;
-
-    transform: scale(var(--site-scale));
-    transform-origin: top left;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-/* Every horizontal section is exactly one desktop screen */
-.panel {
-    width: var(--design-width) !important;
-    min-width: var(--design-width) !important;
-
-    height: var(--design-height) !important;
-    min-height: var(--design-height) !important;
-}
-
-/* Navbar lives in the same desktop coordinate system */
-.navbar {
-    position: fixed !important;
-
-    left: var(--site-left) !important;
-    top: var(--site-top) !important;
-
-    width: var(--design-width) !important;
-    height: 80px !important;
-
-    padding: 0 80px !important;
-
-    transform: scale(var(--site-scale));
-    transform-origin: top left;
-
-    z-index: 9999;
-}
-
-/* Keep desktop logo/nav sizing */
-.logo {
-    margin-top: 30px !important;
-}
-
-.logo img {
-    width: 180px !important;
-    height: 90px !important;
-}
-
-.nav-links {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 35px !important;
-}
-
-.nav-links a {
-    font-size: 13px !important;
-    white-space: nowrap;
-}
-
-/* Home remains 75% hero + 25% contact, exactly like desktop */
-.home {
-    overflow: hidden !important;
-}
-
-.home-main {
-    width: 100% !important;
-    height: 75% !important;
-    min-height: 0 !important;
-}
-
-.home-contact {
-    width: 100% !important;
-    height: 25% !important;
-    min-height: 0 !important;
-}
-
-/* About stays four cards in one row */
-.cards {
-    grid-template-columns: repeat(4, 1fr) !important;
-}
-
-/* Team: main team and each sub-team stay in one row */
-.team-scroll {
-    height: var(--design-height) !important;
-}
-
-.team-members,
-.main-team-members {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    overflow: visible !important;
-}
-
-/* Achievements stay in one desktop row */
-.achievement-cards {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-}
-
-/* Projects stay in one desktop row */
-.projects-list {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-}
-
