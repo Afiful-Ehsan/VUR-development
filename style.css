@@ -74,30 +74,28 @@ body {
    NAVBAR
 ========================================== */
 
-.navbar {
-    position: fixed;
-
-    top: 0;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 9999;
-
-    width: 90%;
-    max-width: 1350px;
-
-    height: 90px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.navbar{
+    width:100%;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 80px;
+    
 }
 
 
-.logo {
-    font-size: 25px;
-    font-weight: 800;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+     margin-top: 30px;
+}
+
+.logo img{
+    width:180px;
+    height:90px;
+    
 }
 
 
